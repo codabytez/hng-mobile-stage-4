@@ -4,22 +4,14 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "base": {
-      "hooks": {
-        "pre_install": "npx install-skia"
-      }
-    },
     "development": {
-      "extends": "base",
       "developmentClient": true,
       "distribution": "internal"
     },
     "preview": {
-      "extends": "base",
       "distribution": "internal"
     },
     "production": {
-      "extends": "base",
       "autoIncrement": true
     }
   },
