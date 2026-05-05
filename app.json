@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "hng-mobile-stage-4",
+    "slug": "hng-mobile-stage-4",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.codabytez.hng-mobile-stage-4"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.codabytez.hngmobilestage4"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "single",
+      "name": "Dead of Night Weather",
+      "shortName": "Dead of Night",
+      "description": "A cinematic dark weather app",
+      "themeColor": "#080C14",
+      "backgroundColor": "#080C14"
+    }
+  }
+}
