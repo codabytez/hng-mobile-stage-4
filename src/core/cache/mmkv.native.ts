@@ -1,23 +1,32 @@
 import { MMKV } from 'react-native-mmkv';
 import type { CachedWeatherData } from '../../features/weather/types';
 
-const storage = new MMKV({ id: 'dead-of-night-cache' });
+const CACHE_TTL_MS = 60 * 60 * 1000;
 
-const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
+let storage: MMKV | null = null;
+try {
+  storage = new MMKV({ id: 'dead-of-night-cache' });
+} catch {
+  // MMKV failed to initialize (e.g. cloud emulator) — cache silently disabled
+}
 
 function cityKey(city: string) {
   return `weather:${city.toLowerCase().trim()}`;
 }
 
 export function setCachedWeather(city: string, data: Omit<CachedWeatherData, 'cachedAt'>) {
-  const payload: CachedWeatherData = { ...data, cachedAt: Date.now() };
-  storage.set(cityKey(city), JSON.stringify(payload));
+  if (!storage) return;
+  try {
+    const payload: CachedWeatherData = { ...data, cachedAt: Date.now() };
+    storage.set(cityKey(city), JSON.stringify(payload));
+  } catch {}
 }
 
 export function getCachedWeather(city: string): CachedWeatherData | null {
-  const raw = storage.getString(cityKey(city));
-  if (!raw) return null;
+  if (!storage) return null;
   try {
+    const raw = storage.getString(cityKey(city));
+    if (!raw) return null;
     return JSON.parse(raw) as CachedWeatherData;
   } catch {
     return null;
