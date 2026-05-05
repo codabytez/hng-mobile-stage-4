@@ -30,7 +30,7 @@ const queryClient = new QueryClient({
 });
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     InstrumentSerif_400Regular_Italic,
     DMSans_400Regular,
     DMSans_500Medium,
@@ -38,7 +38,7 @@ export default function App() {
     DMMono_400Regular,
   });
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded && !fontError) {
     return (
       <View style={styles.splash}>
         <ActivityIndicator color={colors.accentCold} />
