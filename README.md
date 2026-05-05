@@ -2,15 +2,17 @@
 
 A cinematic dark weather app built with React Native (Expo) — runs on **mobile (iOS & Android), web, and desktop** from a single codebase. Built for the HNG14 Mobile Internship Stage 3 & 4.
 
-**🌐 Live Web App:** https://dist-sepia-two-33.vercel.app
+**🌐 Live Web App:** <https://dist-sepia-two-33.vercel.app>
+
+**💼 LinkedIn Post:** <https://www.linkedin.com/posts/codabytez_hng14-reactnative-expo-ugcPost-7457574280969543680-LYer>
 
 ## Platforms
 
-| Platform | How to run |
-|---|---|
-| iOS | `pnpm expo run:ios` |
-| Android | `pnpm expo run:android` |
-| Web | `pnpm web` or `pnpm build:web` → deploy `dist/` |
+| Platform        | How to run                                       |
+| --------------- | ------------------------------------------------ |
+| iOS             | `pnpm expo run:ios`                              |
+| Android         | `pnpm expo run:android`                          |
+| Web             | `pnpm web` or `pnpm build:web` → deploy `dist/`  |
 | Desktop (macOS) | Open web build in browser, or Electron (planned) |
 
 ## Features
@@ -30,11 +32,11 @@ A cinematic dark weather app built with React Native (Expo) — runs on **mobile
 
 Layout adapts by **screen width** — not `Platform.OS`:
 
-| Width | Layout |
-|---|---|
-| < 768px | Mobile: bottom sheets, touch gestures |
-| 768–1024px | Tablet: right sidebar panel (360px) |
-| > 1024px | Desktop: two-column, fixed right sidebar (380px) |
+| Width      | Layout                                           |
+| ---------- | ------------------------------------------------ |
+| < 768px    | Mobile: bottom sheets, touch gestures            |
+| 768–1024px | Tablet: right sidebar panel (360px)              |
+| > 1024px   | Desktop: two-column, fixed right sidebar (380px) |
 
 ## Desktop / Web Features
 
@@ -50,13 +52,15 @@ Layout adapts by **screen width** — not `Platform.OS`:
 - [OpenWeatherMap 5-Day Forecast](https://openweathermap.org/forecast5) — `api.openweathermap.org/data/2.5/forecast`
 
 Add your key to `.env`:
-```
+
+```text
 EXPO_PUBLIC_OWM_API_KEY=your_key_here
 ```
 
 ## Animations
 
-**Mobile (Stage 3)**
+### Mobile (Stage 3)
+
 1. Temperature switcher — slides up/out, springs in on city change
 2. Hourly list stagger — 30ms delay per card (`moti`)
 3. Search sheet spring physics
@@ -65,15 +69,16 @@ EXPO_PUBLIC_OWM_API_KEY=your_key_here
 6. Skeleton shimmer cycling
 7. Error screen entrance scale + fade
 
-**Web / Desktop (Stage 4)**
-8. Sidebar slides in from right on first load (translateX +40px → 0, spring)
-9. Temperature cross-fades on °C/°F toggle
-10. Search result stagger-fade on web sidebar
-11. Error screens scale-spring entrance on all platforms
+### Web / Desktop (Stage 4)
+
+1. Sidebar slides in from right on first load (translateX +40px → 0, spring)
+2. Temperature cross-fades on °C/°F toggle
+3. Search result stagger-fade on web sidebar
+4. Error screens scale-spring entrance on all platforms
 
 ## Architecture
 
-```
+```text
 src/
   core/
     theme/           colors, typography, spacing
@@ -102,21 +107,21 @@ src/
 
 ## Libraries
 
-| Library | Purpose |
-|---|---|
-| `expo-location` | Device GPS |
-| `expo-font` + Google Fonts | Instrument Serif, DM Sans, DM Mono |
-| `axios` | HTTP client |
-| `@tanstack/react-query` | Server state, caching, refetch |
-| `zustand` | Client state (city, unit toggles) |
-| `react-native-mmkv` | Offline cache (native) |
-| `react-native-web` | Web rendering layer |
-| `@gorhom/bottom-sheet` | Sheets on mobile |
-| `react-native-reanimated` | Core animation engine |
-| `moti` | Declarative stagger animations |
-| `@shopify/react-native-skia` | Particle canvas (native) |
-| `react-native-svg` | Weather icons |
-| `@react-native-community/netinfo` | Network connectivity |
+| Library                           | Purpose                            |
+| --------------------------------- | ---------------------------------- |
+| `expo-location`                   | Device GPS                         |
+| `expo-font` + Google Fonts        | Instrument Serif, DM Sans, DM Mono |
+| `axios`                           | HTTP client                        |
+| `@tanstack/react-query`           | Server state, caching, refetch     |
+| `zustand`                         | Client state (city, unit toggles)  |
+| `react-native-mmkv`               | Offline cache (native)             |
+| `react-native-web`                | Web rendering layer                |
+| `@gorhom/bottom-sheet`            | Sheets on mobile                   |
+| `react-native-reanimated`         | Core animation engine              |
+| `moti`                            | Declarative stagger animations     |
+| `@shopify/react-native-skia`      | Particle canvas (native)           |
+| `react-native-svg`                | Weather icons                      |
+| `@react-native-community/netinfo` | Network connectivity               |
 
 ## Setup
 
