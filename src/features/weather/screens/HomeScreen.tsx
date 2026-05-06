@@ -32,6 +32,8 @@ import {
 import { WeatherSidebar } from '../components/WeatherSidebar';
 import { AppMenuBar } from '../components/AppMenuBar';
 import { ContextMenuProvider, ContextMenuTrigger } from '../components/ContextMenu';
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import { SearchSheet } from './SearchSheet';
 import { DayDetailSheet } from './DayDetailSheet';
 import {
   NoInternetScreen,
@@ -45,20 +47,7 @@ import { useLocation } from '../hooks/useLocation';
 import { useWeatherStore, convertTemp, convertWind, tempLabel } from '../store/useWeatherStore';
 import { useKeyboardShortcuts } from '../../../core/hooks/useKeyboardShortcut';
 import { usePlatform } from '../../../core/hooks/usePlatform';
-import { NetworkError, NotFoundError } from '../../../core/api';
 import type { DayForecast } from '../types';
-
-// Mobile-only: lazy import bottom sheet to avoid web worklet warnings
-let BottomSheet: any = null;
-let BottomSheetScrollView: any = null;
-let SearchSheet: any = null;
-
-if (Platform.OS !== 'web') {
-  const bs = require('@gorhom/bottom-sheet');
-  BottomSheet = bs.BottomSheet;
-  BottomSheetScrollView = bs.BottomSheetScrollView;
-  SearchSheet = require('./SearchSheet').SearchSheet;
-}
 
 function SearchIcon() {
   return (
@@ -212,7 +201,7 @@ export function HomeScreen() {
       <View style={styles.root}>
         <WeatherBackground condition="unknown" />
         <LocationDeniedScreen onSearch={openSearch} />
-        {isMobile && SearchSheet && (
+        {isMobile && (
           <SearchSheet bottomSheetRef={searchSheetRef} onSelectCity={handleCitySelect} />
         )}
       </View>
@@ -233,7 +222,7 @@ export function HomeScreen() {
       <View style={styles.root}>
         <WeatherBackground condition="unknown" />
         <NotFoundScreen onRetry={openSearch} />
-        {isMobile && SearchSheet && (
+        {isMobile && (
           <SearchSheet bottomSheetRef={searchSheetRef} onSelectCity={handleCitySelect} />
         )}
       </View>
@@ -327,7 +316,7 @@ export function HomeScreen() {
           </SafeAreaView>
 
           {/* Mobile: persistent bottom sheet */}
-          {isMobile && BottomSheet && BottomSheetScrollView && (
+          {isMobile && (
             <BottomSheet
               ref={persistentSheetRef}
               index={0}
@@ -393,10 +382,10 @@ export function HomeScreen() {
       </View>
 
       {/* Mobile sheets */}
-      {isMobile && SearchSheet && (
+      {isMobile && (
         <SearchSheet bottomSheetRef={searchSheetRef} onSelectCity={handleCitySelect} />
       )}
-      {isMobile && detailSheetRef && (
+      {isMobile && (
         <DayDetailSheet bottomSheetRef={detailSheetRef} day={selectedDay} />
       )}
 
