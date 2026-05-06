@@ -34,6 +34,11 @@
       "description": "A cinematic dark weather app",
       "themeColor": "#080C14",
       "backgroundColor": "#080C14"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "91f2cd5a-7aec-4f61-9727-01d68e9ca822"
+      }
     }
   }
 }
