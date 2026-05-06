@@ -4,7 +4,7 @@ A cinematic dark weather app built with React Native (Expo) — runs on **mobile
 
 **🌐 Live Web App:** <https://dist-sepia-two-33.vercel.app>
 
-**📱 Appetize Preview:** <https://appetize.io/app/b_d47eunwao6aqa2de3jdhimwv3i>
+**📱 Appetize Preview:** <https://appetize.io/app/b_fnbtkxlb76ep45hdr6c5p7j36y>
 
 **💼 LinkedIn Post:** <https://www.linkedin.com/posts/codabytez_hng14-reactnative-expo-ugcPost-7457574280969543680-LYer>
 
